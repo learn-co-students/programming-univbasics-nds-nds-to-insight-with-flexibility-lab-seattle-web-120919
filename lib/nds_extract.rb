@@ -69,9 +69,12 @@ def gross_per_studio(collection)
   column_index = 0 
   while column_index < collection.length do 
 movies_info = collection[column_index]
-   # binding.pry
-  new_hash[movies_info[:studio]] = movies_info[:worldwide_gross]
+if !new_hash[movies_info[:studio]] = movies_info[:worldwide_gross]
+else new_hash[movies_info][:studio]] += 1 
   
+end 
+i += 1 
+end
 
   
   column_index += 1 
