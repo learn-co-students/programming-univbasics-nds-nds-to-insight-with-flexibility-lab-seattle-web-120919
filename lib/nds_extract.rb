@@ -69,15 +69,14 @@ def gross_per_studio(collection)
   column_index = 0 
   while column_index < collection.length do 
 movies_info = collection[column_index]
-if !new_hash[movies_info[:studio]] = movies_info[:worldwide_gross]
-else new_hash[movies_info][:studio]] += 1 
-  
+if !new_hash[movies_info[:studio]] 
+  new_hash[movies_info[:studio]] = movies_info[:worldwide_gross]
+else 
+new_hash[movies_info[:studio]] += movies_info[:worldwide_gross] #^if does exist in this new hash, then we increase the worldwide gross 
 end 
-i += 1 
-end
 
   
-  column_index += 1 
+column_index += 1 
   
     
   # GOAL: Given an Array of Hashes where each Hash represents a movie,
@@ -96,7 +95,22 @@ return new_hash
 end
 
 def movies_with_directors_set(source)
+  #"source" returns [{:name=>"Byron Poodle",sInName>)> source
+  # :movies=>[{:title=>"At the park"}, {:title=>"On the couch"}]},
+ # {:name=>"Nancy Drew", :movies=>[{:title=>"Biting"}]}]
+ 
   new_array = []
+  
+  column_index = 0
+  while column_index < source.length do 
+  name = source[column_index][:name]  # this line and the line below are needed, in addition to calling the past method below, because we need to show that method we called what names and movies we want it to operate on
+  movies = source[column_index][:movies]
+  new_array << movies_with_director_key(name, movies)
+  column_index += 1   
+  end
+  
+
+    
   # GOAL: For each director, find their :movies Array and stick it in a new Array
   #
   # INPUT:
@@ -107,6 +121,7 @@ def movies_with_directors_set(source)
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
+  return new_array
 end
 
 # ----------------    End of Your Code Region --------------------
